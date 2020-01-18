@@ -6,3 +6,8 @@
 - Server writes repos to database
   - if err, send error status code as response to client
   - else, send success status
+
+
+db.names.insert({
+  repos: 'The Repo'
+})
