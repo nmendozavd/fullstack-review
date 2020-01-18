@@ -1,10 +1,3 @@
-1. Client grabs input username and sends to the server
-2. Server GET's user repos from github
-  a) if user does not exists in gitub, I get back an error message
-  b) if user does exists, I should get the repos for that user
-3. Server has repo information, now I want to input data into DB
-4. Send response back to Client
-5.
 
 - Client sends github username to server
 - Server sends GET request to githubt for user's repos

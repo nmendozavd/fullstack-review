@@ -1,24 +1,30 @@
 const express = require('express');
 let app = express();
 const morgan = require('morgan');
+const getReposByUsername  = require('../helpers/github.js');
 
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos', function (req, res) {
-
-  // TODO - your code here!
+  var username = req.body.term;
   // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
-  // res.send('nmendozavd');
-  // mongo.add(repos, (err) => {
+  // and get the repo information from the github API
+  getReposByUsername(username, (err, data) => {
+    if (err) {
+      console.log(err)
+      res.send(500);
+      res.end()
+    } else {
+      res.status(200);
+      console.log(data)
+    }
+  });
 
-  // })
+  //then save the repo information in the database
 
-  // res.send(201);
-  res.end();
+
 });
 
 app.get('/repos', function (req, res) {
