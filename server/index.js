@@ -1,6 +1,8 @@
 const express = require('express');
 let app = express();
 const morgan = require('morgan');
+const save = require('../database/index.js');
+
 const getReposByUsername  = require('../helpers/github.js');
 
 app.use(express.json());
@@ -18,7 +20,7 @@ app.post('/repos', function (req, res) {
       res.end()
     } else {
       res.status(200);
-      console.log(data)
+      save(data);
     }
   });
 
