@@ -25,4 +25,4 @@ let getReposByUsername = (username, callback) => {
 
 };
 
-module.exports = getReposByUsername;
+module.exports = { getReposByUsername };

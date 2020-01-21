@@ -16,13 +16,35 @@ class App extends React.Component {
     // this.search = this.search.bind(this);
   }
 
+  componentDidMount() {
+    this.getMovies()
+  }
+
+  getMovies () {
+    axios.get('/repos')
+      .then((response) => {
+        console.log(response.data)
+        var data = response.data;
+        this.setState({ repos: data })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   search (term) {
     console.log(`${term} was searched`);
     axios.post('/repos', {
       term: term
     })
+    .then((response) => {
+      this.getMovies()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
+
 
   render () {
     return (<div>
