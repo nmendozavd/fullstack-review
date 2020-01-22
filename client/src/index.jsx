@@ -20,7 +20,7 @@ class App extends React.Component {
     this.getMovies()
   }
 
-  getMovies () {
+  getRepos () {
     axios.get('/repos')
       .then((response) => {
         console.log(response.data)
@@ -38,7 +38,7 @@ class App extends React.Component {
       term: term
     })
     .then((response) => {
-      this.getMovies()
+      this.getRepos()
     })
     .catch((err) => {
       console.log(err);
